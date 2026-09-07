@@ -1,0 +1,23 @@
+pipeline{
+ agent any
+ stages{
+   stage("checkout"){
+     steps{
+       checkout scm
+}
+}
+  stage("run"){
+     steps{
+       bat 'java ToDoApp.java'
+}
+} 
+}
+  post{
+  success{
+   echo 'java project run successfully!'
+}
+  failure{
+   echo 'java Project failed'
+}
+}
+}
